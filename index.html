@@ -104,7 +104,34 @@
                     </div>
                 </div>
             </div>
-            
+            <!DOCTYPE html>
+<html>
+<head>
+	<title>Счетчик посетителей</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.get("https://raw.githubusercontent.com/PinskiyGithub/BFATR_SITE/main/counter.txt", function(data) {
+				var counter = parseInt(data);
+				counter++;
+				$.ajax({
+					url: "https://raw.githubusercontent.com/PinskiyGithub/BFATR_SITE/main/counter.txt",
+					type: "PUT",
+					contentType: "text/plain",
+					data: counter,
+					success: function() {
+						$("#counter").text(counter);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Добро пожаловать на мою веб-страницу!</h1>
+	<p>Вы являетесь посетителем номер <span id="counter">0</span>.</p>
+</body>
+</html>
         </div>
     </div>
 </section>
